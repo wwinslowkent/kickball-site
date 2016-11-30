@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic HTML Page</title>
+    <link rel="stylesheet" href="public/stylesheets/app.css">
+  </head>
+
+  <body>
+    <h1>
+      <%= @team_name %>
+      </h1>
+      <% current_team = Team.new(@team_name.to_sym) %>
+      <% allplayers = current_team.players %>
+      <% allplayers.each do |player| %>
+      <ul>
+      <a href="/positions/<%= player.position %>"> <li><%=  player.position %> </a> :
+       <%=  player.name %> </li>
+      </ul>
+      <% end %>
+
+
+    <a href="/teams">All teams</a>
+  </body>
+</html>

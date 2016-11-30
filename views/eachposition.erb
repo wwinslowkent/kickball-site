@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic HTML Page</title>
+    <link rel="stylesheet" href="public/stylesheets/app.css">
+  </head>
+
+  <body>
+    <h1>
+      <% @position_name %>
+      </h1>
+      <% listofplayers = [] %>
+      <% TeamData::ROLL_CALL.each do |team_name, roster| %>
+        <% roster.each do |position, player| %>
+          <% if position == @position_name.to_sym %>
+              <% listofplayers << player %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% listofplayers.each do |player| %>
+        <li><%=  player %> </li>
+      <% end %>
+
+
+    <a href="/positions"><br>All Positions</a>
+  </body>
+</html>

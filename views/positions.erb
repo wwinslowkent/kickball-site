@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic HTML Page</title>
+    <link rel="stylesheet" href="public/stylesheets/app.css">
+  </head>
+
+  <body>
+    <h1>
+      Positions
+      </h1>
+      <% position_array = [] %>
+      <% TeamData::ROLL_CALL.each do |team_name, roster| %>
+        <% roster.each do |position, player| %>
+          <% pos = position_array.find { |a| a == position } %>
+          <% if pos.nil? %>
+            <% position_array << position %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% position_array.each do |position| %>
+        <a href="/positions/<%= position %>"> <li><%=  position %> </a>
+      <% end %>
+
+
+    <a href="/teams"><br>All teams</a>
+  </body>
+</html>
